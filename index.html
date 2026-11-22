@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>NEON DISTRICT — 2 Minute Skate</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090b10;font-family:Impact,'Arial Black',sans-serif;color:#fff}canvas{display:block;width:100%;height:100%}
+#hud{position:absolute;inset:0;pointer-events:none}#top{position:absolute;left:28px;top:22px;text-transform:uppercase;text-shadow:3px 3px 0 #111}.label{font:700 12px Arial;color:#b7bbc4;letter-spacing:3px}.score{font-size:48px;line-height:.9;color:#fff}.combo{margin-top:8px;font-size:27px;color:#baff00}.combo span{color:#fff}
+#time{position:absolute;right:28px;top:22px;text-align:right}.timeNum{font-size:58px;line-height:.85;color:#baff00}.timeNum.red{color:#ff3d61}
+#trick{position:absolute;left:50%;bottom:155px;transform:translateX(-50%);text-align:center;font-size:32px;text-transform:uppercase;text-shadow:3px 3px 0 #111;opacity:0;transition:.12s}#trick.show{opacity:1}#trick small{display:block;font:800 14px Arial;color:#baff00;margin-top:4px}
+#logo{position:absolute;left:50%;top:42px;transform:translateX(-50%) rotate(-2deg);text-align:center;font-size:20px;letter-spacing:5px;text-shadow:2px 2px #111}#logo b{color:#baff00}
+#start,#result{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(7,9,14,.92),rgba(7,9,14,.45));pointer-events:auto}#start.hidden,#result.hidden{display:none}.panel{width:min(560px,86vw);transform:rotate(-1deg)}.kicker{font:900 13px Arial;letter-spacing:6px;color:#baff00}.title{font-size:clamp(58px,10vw,100px);line-height:.78;text-transform:uppercase;text-shadow:6px 6px 0 #20232b}.title i{display:block;color:#baff00;font-style:normal}.subtitle{margin-top:18px;font:700 14px Arial;color:#c9ccd3;letter-spacing:1px}.controls{display:flex;gap:10px;margin:22px 0}.key{min-width:42px;padding:9px 8px;border:2px solid #fff;text-align:center;font:900 13px Arial;box-shadow:3px 3px 0 #baff00}.btn{margin-top:18px;border:0;background:#baff00;color:#10120d;padding:16px 24px;font:900 18px Arial;letter-spacing:2px;transform:skew(-5deg);cursor:pointer;box-shadow:6px 6px 0 #fff}#result .title{font-size:72px}
+#touch{position:absolute;left:18px;right:18px;bottom:18px;display:none;justify-content:space-between;pointer-events:none}.touchgroup{display:flex;gap:8px}.touch{width:62px;height:62px;border:2px solid rgba(255,255,255,.7);border-radius:50%;background:rgba(12,14,18,.55);pointer-events:auto;color:#fff;font:900 18px Arial;text-align:center;line-height:58px;user-select:none;touch-action:none}.touch.jump{width:72px;height:72px;line-height:68px;border-color:#baff00;color:#baff00}@media(max-width:900px),(pointer:coarse){#touch{display:flex}#top{left:14px;top:12px}.score{font-size:34px}.combo{font-size:20px}#time{right:14px;top:12px}.timeNum{font-size:42px}#logo{display:none}.controls{display:none}.subtitle{max-width:340px}.panel{width:82vw}#trick{bottom:112px;font-size:24px}}
+</style></head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud"><div id="top"><div class="label">Score</div><div class="score" id="score">000000</div><div class="combo">COMBO <span id="combo">x1</span></div></div><div id="logo">NEON <b>DISTRICT</b></div><div id="time"><div class="label">Run Time</div><div class="timeNum" id="timeNum">2:00</div></div><div id="trick"></div></div>
+<div id="start"><div class="panel"><div class="kicker">THE DAILY LINE</div><div class="title">NEON<i>DISTRICT</i></div><div class="subtitle">Land tricks to build your combo. 2-minute run. Don't bail.</div><div class="controls"><div class="key">W</div><div class="key">A D</div><div class="key">SPACE</div><div class="key">SHIFT</div><div class="key">Q E</div></div><button class="btn" id="play">DROP IN</button></div></div>
+<div id="result" class="hidden"><div class="panel"><div class="kicker">RUN COMPLETE</div><div class="title">FINAL<i id="final">000000</i></div><div class="subtitle" id="resultText"></div><button class="btn" id="again">SKATE AGAIN</button></div></div>
+<div id="touch"><div class="touchgroup"><div class="touch" data-key="left">‹</div><div class="touch" data-key="right">›</div></div><div class="touchgroup"><div class="touch" data-key="grind">G</div><div class="touch jump" data-key="jump">AIR</div></div></div>
+<script type="module">
+import * THREE='https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+</script>
+<script src="game.js"></script>
+</body></html>
